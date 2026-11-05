@@ -1,7 +1,9 @@
 # 业务平台安卓应用更新
 
-本仓库只公开发布 APK 和版本清单。应用源码保存在私有仓库。
+本仓库公开发布 APK、安装版本清单和经过签名的网页功能包。应用源码与诊断日志保存在私有仓库。
+
+从 1.6.0 起，App 启动或点击“同步功能”会读取 `features.json`，验证内置公钥对应的 RSA 签名后加载网页增强脚本和浮窗快捷功能。修改铃铛识别、网页表单辅助等功能时，可以发布新版功能包，手机无须重新安装 App。功能包的私钥只保存在开发机器上，不能上传到本仓库。原生 Android 代码或权限的变更仍需发布新版 APK。
 
 手机端通过 GitHub API 读取 `app-update.json`，下载 Release 中的 APK，校验 SHA-256 后交给 Android 系统安装。
 
-发布新版本时，先用原签名密钥构建 APK 并创建新的 GitHub Release，取得 APK 资源 ID。随后增加 `app-update.json` 的 `versionCode`，填写版本名、`https://api.github.com/repos/MsMoucao/business-portal-android-updates/releases/assets/资源ID` 和 APK 的 SHA-256，最后推送到 `main`。应用启动时会检查更新，也可手动点击“检查更新”。
+发布新的 Android 版本时，先用原签名密钥构建 APK 并创建新的 GitHub Release，取得 APK 资源 ID。随后增加 `app-update.json` 的 `versionCode`，填写版本名、`https://api.github.com/repos/MsMoucao/business-portal-android-updates/releases/assets/资源ID` 和 APK 的 SHA-256，最后推送到 `main`。应用启动时会检查更新，也可手动点击“检查应用版本”。
