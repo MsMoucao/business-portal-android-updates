@@ -8,6 +8,8 @@
 
 1.8.0 增加通用原生页面渲染器。签名功能包中的 `nativeUi.screens` 可定义原生标签页、消息列表、提醒列表、文字和预设按钮，后续同类页面调整无需重新安装 APK。新增渲染器以外的系统能力仍需 APK 更新。
 
+1.9.0 修复网页预填字段导致自动登录跳过的问题，并让原生提醒记录可点击打开同站流程链接；缺少链接时可以进入 OA 铃铛处理。
+
 手机端通过 GitHub API 读取 `app-update.json`，下载 Release 中的 APK，校验 SHA-256 后交给 Android 系统安装。
 
 发布新的 Android 版本时，先用原签名密钥构建 APK 并创建新的 GitHub Release，取得 APK 资源 ID。随后增加 `app-update.json` 的 `versionCode`，填写版本名、`https://api.github.com/repos/MsMoucao/business-portal-android-updates/releases/assets/资源ID` 和 APK 的 SHA-256，最后推送到 `main`。应用启动时会检查更新，也可手动点击“检查应用版本”。
