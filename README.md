@@ -10,6 +10,8 @@
 
 1.9.0 修复网页预填字段导致自动登录跳过的问题，并让原生提醒记录可点击打开同站流程链接；缺少链接时可以进入 OA 铃铛处理。
 
+1.10.0 将流程提醒、其他通知和工具拆成独立原生页面，去掉重复的铃铛数字卡片，压缩流程卡片内容；点流程卡片时优先直达流程链接，或尝试在铃铛列表中匹配“阅读详情”。
+
 手机端通过 GitHub API 读取 `app-update.json`，下载 Release 中的 APK，校验 SHA-256 后交给 Android 系统安装。
 
 发布新的 Android 版本时，先用原签名密钥构建 APK 并创建新的 GitHub Release，取得 APK 资源 ID。随后增加 `app-update.json` 的 `versionCode`，填写版本名、`https://api.github.com/repos/MsMoucao/business-portal-android-updates/releases/assets/资源ID` 和 APK 的 SHA-256，最后推送到 `main`。应用启动时会检查更新，也可手动点击“检查应用版本”。
