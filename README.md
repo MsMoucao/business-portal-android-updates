@@ -12,6 +12,8 @@
 
 1.10.0 将流程提醒、其他通知和工具拆成独立原生页面，去掉重复的铃铛数字卡片，压缩流程卡片内容；点流程卡片时优先直达流程链接，或尝试在铃铛列表中匹配“阅读详情”。
 
+1.11.0 让原生流程页只显示从 OA 铃铛“待处理”面板核对到的提醒，处理后的记录在下一次成功同步后从待处理页消失；无法核对时显示待同步。顶部“铃铛”可进入原网页提醒面板。此原生存储与入口改动需要覆盖安装一次，之后面板识别逻辑可通过签名功能包继续更新。
+
 手机端通过 GitHub API 读取 `app-update.json`，下载 Release 中的 APK，校验 SHA-256 后交给 Android 系统安装。
 
 发布新的 Android 版本时，先用原签名密钥构建 APK 并创建新的 GitHub Release，取得 APK 资源 ID。随后增加 `app-update.json` 的 `versionCode`，填写版本名、`https://api.github.com/repos/MsMoucao/business-portal-android-updates/releases/assets/资源ID` 和 APK 的 SHA-256，最后推送到 `main`。应用启动时会检查更新，也可手动点击“检查应用版本”。
